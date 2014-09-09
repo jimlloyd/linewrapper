@@ -1,0 +1,43 @@
+{
+  "name": "linewrapper",
+  "version": "0.0.0",
+  "description": "A wrapper around Readable producing a pausable, line-by-line readable stream.",
+  "main": "lib/linewrapper.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "make"
+  },
+  "keywords": [
+    "line",
+    "reader",
+    "pause",
+    "pauseablereadable",
+    "stream"
+  ],
+  "author": "Jim Lloyd <jim.lloyd@gmail.com>",
+  "license": "ISC",
+  "jshintConfig": {
+    "node": true,
+    "globalstrict": false,
+    "globals": {
+      "expect": true,
+      "describe": true,
+      "it": true
+    }
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "chai-as-promised": "^4.1.1",
+    "concat-stream": "^1.4.6",
+    "from": "^0.1.3",
+    "jshint": "^2.5.5",
+    "mocha": "^1.21.4",
+    "q": "^1.0.1",
+    "semaphore": "^1.0.1"
+  },
+  "dependencies": {
+    "lodash": "^2.4.1"
+  }
+}
