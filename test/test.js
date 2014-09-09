@@ -72,7 +72,7 @@ describe('LineWrapper', function() {
 
         var expected = reGroup(lines);
 
-        var linewrapper = new LineWrapper({ source: input, paused: true });
+        var linewrapper = new LineWrapper({ source: input });
 
         var received = [];
         linewrapper.on('data', function(chunk) {
@@ -86,8 +86,6 @@ describe('LineWrapper', function() {
             expect(received).to.deep.equal(expected);
             done();
         });
-
-        input.resume();
     });
 
     it('should handle partial lines of text and drop last fragment', function(done) {
@@ -97,7 +95,7 @@ describe('LineWrapper', function() {
 
         var expected = reGroup(lines);
 
-        var linewrapper = new LineWrapper({ source: input, paused: true });
+        var linewrapper = new LineWrapper({ source: input });
 
         var received = [];
         linewrapper.on('data', function(chunk) {
@@ -111,8 +109,6 @@ describe('LineWrapper', function() {
             expect(received).to.deep.equal(expected);
             done();
         });
-
-        input.resume();
     });
 
     it('should handle pause and resume', function(done) {
@@ -120,9 +116,7 @@ describe('LineWrapper', function() {
         var lines = ['1\n', '2\n', '3\n', '4\n', '5\n', '6\n', '7\n'];
         var input = from(lines.slice());
 
-        var expected = reGroup(lines);
-
-        var linewrapper = new LineWrapper({ source: input, paused: true, timeoutMillis: 100 });
+        var linewrapper = new LineWrapper({ source: input, timeoutMillis: 100 });
 
         var received = [];
         linewrapper.on('data', function(chunk) {
@@ -140,11 +134,9 @@ describe('LineWrapper', function() {
         linewrapper.on('end', function() {
             expect(linewrapper._sourcedEnded).to.equal(true);
             expect(linewrapper._lineCount).to.equal(7);
-            expect(received).to.deep.equal(expected);
+            expect(received).to.deep.equal(lines);
             done();
         });
-
-        input.resume();
     });
 
 });
