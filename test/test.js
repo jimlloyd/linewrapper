@@ -66,6 +66,7 @@ describe('LineWrapper', function() {
     }
 
     it('should handle partial lines of text', function(done) {
+        this.timeout(5000); // excessive timeout needed for Travis. Not sure why.
         var lines = ['Hello ', 'world\n', 'Good', 'bye Jim\n'];
         var input = from(lines.slice());
 
@@ -90,6 +91,7 @@ describe('LineWrapper', function() {
     });
 
     it('should handle partial lines of text and drop last fragment', function(done) {
+        this.timeout(5000); // excessive timeout needed for Travis. Not sure why.
         var lines = ['Hello ', 'world\n', 'Good', 'bye Jim\n', 'foo'];
         var input = from(lines.slice());
 
@@ -114,7 +116,7 @@ describe('LineWrapper', function() {
     });
 
     it('should handle pause and resume', function(done) {
-//         this.timeout(5000);
+        this.timeout(5000);
         var lines = ['1\n', '2\n', '3\n', '4\n', '5\n', '6\n', '7\n'];
         var input = from(lines.slice());
 
